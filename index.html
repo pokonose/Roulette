@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CASINO ROULETTE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app-container">
+
+    <!-- ヘッダー -->
+    <header class="app-header">
+      <h1>🎰 CASINO ROULETTE</h1>
+      <p>文化祭 SPECIAL ROULETTE</p>
+    </header>
+
+    <!-- モード切り替え -->
+    <nav class="mode-navigation">
+      <button id="numberMode" class="mode-button active">
+        数字ルーレット
+      </button>
+
+      <button id="bowlingMode" class="mode-button">
+        ボウリング
+      </button>
+    </nav>
+
+    <!-- 数字設定 -->
+    <section id="numberSettings" class="settings-section">
+      <h2>数字設定</h2>
+
+      <div class="input-row">
+        <label>
+          最小値
+          <input id="minNumber" type="number" value="1">
+        </label>
+
+        <label>
+          最大値
+          <input id="maxNumber" type="number" value="10">
+        </label>
+
+        <button id="applyNumberButton">
+          設定を適用
+        </button>
+      </div>
+
+      <label class="checkbox-label">
+        <input type="checkbox" id="excludeWinner">
+        当選した数字を次回の抽選から除外
+      </label>
+    </section>
+
+    <!-- 共通設定 -->
+    <section class="settings-section">
+      <label class="checkbox-label">
+        <input type="checkbox" id="soundEnabled" checked>
+        効果音を有効にする
+      </label>
+    </section>
+
+    <!-- 2レーン表示 -->
+    <main class="lanes-container">
+
+      <!-- レーン1 -->
+      <section class="lane-card lane-one">
+
+        <header class="lane-header">
+          <h2>LANE 1</h2>
+          <span class="lane-label">レーン1</span>
+        </header>
+
+        <!-- ルーレット -->
+        <div class="roulette-section">
+          <div class="roulette-wrapper">
+            <div class="roulette-pointer"></div>
+            <canvas id="rouletteCanvas1" width="600" height="600"></canvas>
+          </div>
+
+          <button id="spinButton1" class="spin-button">
+            SPIN!
+          </button>
+
+          <div class="result-box">
+            <p>抽選結果</p>
+            <h3 id="resultText1">READY?</h3>
+          </div>
+        </div>
+
+        <!-- ボウリング専用 -->
+        <section id="bowlingSettings1" class="bowling-settings hidden">
+
+          <div class="bowling-info">
+            <p>
+              抽選番号：
+              <strong id="bowlingNumber1">未抽選</strong>
+            </p>
+
+            <p>
+              目標ピン数：
+              <strong id="targetPins1">未設定</strong>
+            </p>
+
+            <p id="bowlingMessage1">
+              抽選してください
+            </p>
+          </div>
+
+          <h3>倒したピンの本数</h3>
+
+          <div class="pin-buttons">
+            <button class="pin-button" data-lane="1" data-pins="1">1</button>
+            <button class="pin-button" data-lane="1" data-pins="2">2</button>
+            <button class="pin-button" data-lane="1" data-pins="3">3</button>
+            <button class="pin-button" data-lane="1" data-pins="4">4</button>
+            <button class="pin-button" data-lane="1" data-pins="5">5</button>
+            <button class="pin-button" data-lane="1" data-pins="6">6</button>
+          </div>
+
+          <div id="bowlingPrize1" class="bowling-prize">
+            判定待ち
+          </div>
+
+        </section>
+
+        <!-- 次のお客さん -->
+        <button id="nextBowlingButton1" class="sub-button">
+          次のお客さんへ
+        </button>
+
+        <!-- レーン1履歴 -->
+        <section class="history-section">
+          <h3>レーン1 履歴</h3>
+
+          <ul id="historyList1" class="history-list"></ul>
+
+          <button id="clearHistoryButton1" class="sub-button">
+            レーン1の履歴を削除
+          </button>
+        </section>
+
+      </section>
+
+
+      <!-- レーン2 -->
+      <section class="lane-card lane-two">
+
+        <header class="lane-header">
+          <h2>LANE 2</h2>
+          <span class="lane-label">レーン2</span>
+        </header>
+
+        <!-- ルーレット -->
+        <div class="roulette-section">
+          <div class="roulette-wrapper">
+            <div class="roulette-pointer"></div>
+            <canvas id="rouletteCanvas2" width="600" height="600"></canvas>
+          </div>
+
+          <button id="spinButton2" class="spin-button">
+            SPIN!
+          </button>
+
+          <div class="result-box">
+            <p>抽選結果</p>
+            <h3 id="resultText2">READY?</h3>
+          </div>
+        </div>
+
+        <!-- ボウリング専用 -->
+        <section id="bowlingSettings2" class="bowling-settings hidden">
+
+          <div class="bowling-info">
+            <p>
+              抽選番号：
+              <strong id="bowlingNumber2">未抽選</strong>
+            </p>
+
+            <p>
+              目標ピン数：
+              <strong id="targetPins2">未設定</strong>
+            </p>
+
+            <p id="bowlingMessage2">
+              抽選してください
+            </p>
+          </div>
+
+          <h3>倒したピンの本数</h3>
+
+          <div class="pin-buttons">
+            <button class="pin-button" data-lane="2" data-pins="1">1</button>
+            <button class="pin-button" data-lane="2" data-pins="2">2</button>
+            <button class="pin-button" data-lane="2" data-pins="3">3</button>
+            <button class="pin-button" data-lane="2" data-pins="4">4</button>
+            <button class="pin-button" data-lane="2" data-pins="5">5</button>
+            <button class="pin-button" data-lane="2" data-pins="6">6</button>
+          </div>
+
+          <div id="bowlingPrize2" class="bowling-prize">
+            判定待ち
+          </div>
+
+        </section>
+
+        <!-- 次のお客さん -->
+        <button id="nextBowlingButton2" class="sub-button">
+          次のお客さんへ
+        </button>
+
+        <!-- レーン2履歴 -->
+        <section class="history-section">
+          <h3>レーン2 履歴</h3>
+
+          <ul id="historyList2" class="history-list"></ul>
+
+          <button id="clearHistoryButton2" class="sub-button">
+            レーン2の履歴を削除
+          </button>
+        </section>
+
+      </section>
+
+    </main>
+
+    <!-- 共通保存機能 -->
+    <section class="settings-section save-section">
+      <h2>データ管理</h2>
+
+      <div class="history-actions">
+        <button id="saveButton">
+          設定・履歴を保存
+        </button>
+
+        <button id="loadButton">
+          設定・履歴を読み込み
+        </button>
+      </div>
+    </section>
+
+    <footer>
+      <p>CASINO ROULETTE</p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

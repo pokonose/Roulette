@@ -1,0 +1,478 @@
+
+/* =========================
+   基本設定
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background: #101820;
+  color: #ffffff;
+  font-family: Arial, "Noto Sans JP", sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  transition: 0.2s;
+}
+
+button:hover {
+  filter: brightness(1.15);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* =========================
+   ヘッダー
+========================= */
+
+.app-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.app-header h1 {
+  margin: 0;
+  color: #f5c542;
+  font-size: 34px;
+  letter-spacing: 3px;
+}
+
+.app-header p {
+  margin: 8px 0 0;
+  color: #c8d0d8;
+  letter-spacing: 2px;
+}
+
+/* =========================
+   モード切り替え
+========================= */
+
+.mode-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.mode-button {
+  padding: 14px 35px;
+  border-radius: 8px;
+  background: #293744;
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.mode-button.active {
+  background: #d6a928;
+  color: #151515;
+}
+
+/* =========================
+   設定エリア
+========================= */
+
+.settings-section {
+  background: #1c2a35;
+  border: 1px solid #344653;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.settings-section h2 {
+  margin-top: 0;
+  color: #f5c542;
+  font-size: 20px;
+}
+
+.input-row {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.input-row label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.input-row input {
+  width: 100px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #536574;
+  background: #101820;
+  color: white;
+}
+
+.input-row button,
+.history-actions button {
+  padding: 11px 18px;
+  border-radius: 6px;
+  background: #d6a928;
+  color: #151515;
+  font-weight: bold;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.checkbox-label input {
+  width: 18px;
+  height: 18px;
+  accent-color: #e6b931;
+}
+
+/* =========================
+   2レーン表示
+========================= */
+
+.lanes-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+.lane-card {
+  min-width: 0;
+  padding: 18px;
+  border-radius: 14px;
+  background: #1c2a35;
+  border: 2px solid #536574;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.3);
+}
+
+.lane-one {
+  border-top: 5px solid #e7b632;
+}
+
+.lane-two {
+  border-top: 5px solid #42a5f5;
+}
+
+.lane-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.lane-header h2 {
+  margin: 0;
+  font-size: 25px;
+  color: #f5c542;
+}
+
+.lane-two .lane-header h2 {
+  color: #64b5f6;
+}
+
+.lane-label {
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #344653;
+  font-size: 13px;
+}
+
+/* =========================
+   ルーレット
+========================= */
+
+.roulette-section {
+  text-align: center;
+}
+
+.roulette-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 390px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 15px;
+}
+
+.roulette-wrapper canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.roulette-pointer {
+  position: absolute;
+  z-index: 2;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 17px solid transparent;
+  border-right: 17px solid transparent;
+  border-top: 34px solid #ffffff;
+  filter: drop-shadow(0 2px 3px #000000);
+}
+
+.spin-button {
+  width: 85%;
+  max-width: 300px;
+  padding: 15px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f5d36b, #d49b16);
+  color: #171717;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  box-shadow: 0 4px 0 #8d6410;
+}
+
+.spin-button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #8d6410;
+}
+
+.result-box {
+  margin: 18px auto;
+  padding: 12px;
+  border-radius: 10px;
+  background: #101820;
+  border: 1px solid #536574;
+}
+
+.result-box p {
+  margin: 0;
+  color: #b8c4ce;
+  font-size: 14px;
+}
+
+.result-box h3 {
+  margin: 8px 0 0;
+  color: #f5c542;
+  font-size: 30px;
+  overflow-wrap: anywhere;
+}
+
+/* =========================
+   ボウリング設定
+========================= */
+
+.bowling-settings {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  background: #101820;
+  border: 1px solid #536574;
+}
+
+.bowling-info {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.bowling-info p {
+  margin: 8px 0;
+}
+
+.bowling-info strong {
+  color: #f5c542;
+  font-size: 20px;
+}
+
+.bowling-settings h3 {
+  text-align: center;
+  color: #f5c542;
+  font-size: 17px;
+}
+
+.pin-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.pin-button {
+  min-height: 48px;
+  border-radius: 8px;
+  background: #344653;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border: 1px solid #647887;
+}
+
+.pin-button:hover {
+  background: #526b7d;
+}
+
+.pin-button:disabled {
+  opacity: 0.4;
+}
+
+.bowling-prize {
+  margin-top: 15px;
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  background: #293744;
+  color: #ffffff;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+/* =========================
+   サブボタン
+========================= */
+
+.sub-button {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  padding: 11px;
+  border-radius: 7px;
+  background: #536574;
+  color: white;
+  font-weight: bold;
+}
+
+.sub-button:hover {
+  background: #687f90;
+}
+
+/* =========================
+   履歴
+========================= */
+
+.history-section {
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #536574;
+}
+
+.history-section h3 {
+  color: #f5c542;
+  font-size: 18px;
+}
+
+.history-list {
+  max-height: 250px;
+  overflow-y: auto;
+  padding-left: 25px;
+}
+
+.history-list li {
+  padding: 8px 5px;
+  border-bottom: 1px solid #344653;
+  overflow-wrap: anywhere;
+  font-size: 14px;
+}
+
+.history-section .sub-button {
+  background: #8d4141;
+}
+
+.history-section .sub-button:hover {
+  background: #ad5050;
+}
+
+/* =========================
+   保存・読み込み
+========================= */
+
+.save-section {
+  margin-top: 25px;
+}
+
+.history-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.history-actions button {
+  flex: 1;
+  min-width: 180px;
+}
+
+/* =========================
+   表示切り替え
+========================= */
+
+.hidden {
+  display: none !important;
+}
+
+/* =========================
+   フッター
+========================= */
+
+footer {
+  padding: 20px;
+  text-align: center;
+  color: #8796a3;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+/* =========================
+   小さい画面への対応
+========================= */
+
+@media (max-width: 700px) {
+  body {
+    padding: 10px;
+  }
+
+  .app-header h1 {
+    font-size: 25px;
+  }
+
+  .lanes-container {
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+
+  .lane-card {
+    padding: 12px;
+  }
+
+  .roulette-wrapper {
+    max-width: 300px;
+  }
+
+  .mode-button {
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+
+  .result-box h3 {
+    font-size: 24px;
+  }
+}

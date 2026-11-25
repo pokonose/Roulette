@@ -603,6 +603,7 @@ function judgeBowling(laneIndex, actualPins) {
 
 function nextCustomer(laneIndex) {
   const lane = lanes[laneIndex];
+   
 
   if (lane.isSpinning) return;
 

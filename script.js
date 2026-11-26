@@ -583,9 +583,9 @@ function judgeBowling(laneIndex, actualPins) {
     `目標 ${lane.targetPins}本 ／ 実際 ${actualPins}本`;
 
   // 景品ごとに効果音を変更
-  if (prize === "A賞！") {
+  if (prize.startsWith("A賞！"))
     playSound(1000, 0.3);
-  } else if (prize === "B賞！") {
+  } else if (prize.startsWith("B賞！")) {
     playSound(700, 0.2);
   } else {
     playSound(350, 0.25);

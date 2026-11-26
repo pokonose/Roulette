@@ -551,11 +551,11 @@ function judgeBowling(laneIndex, actualPins) {
   let prize;
 
   if (difference === 0) {
-    prize = "A賞！";
+    prize = "A賞！好きなお菓子２つ！";
   } else if (difference === 1) {
-    prize = "B賞！";
+    prize = "B賞！好きなお菓子１つ！";
   } else {
-    prize = "参加賞";
+    prize = "参加賞！ランダムでお菓子１つ！";
   }
 
   const historyItem = {
